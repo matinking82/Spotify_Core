@@ -1,0 +1,8 @@
+node_modules
+dist
+prisma/migrations
+.env
+swagger-output.json
+musics/
+images/
+logs.log
