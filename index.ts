@@ -8,6 +8,8 @@ import path from "path";
 import swaggerUi from "swagger-ui-express";
 import { generateSwagger } from './swagger';
 
+import artistRouter from './routers/artistRouter';
+import musicsRouter from './routers/musicsRouter';
 
 let app = express();
 
@@ -18,6 +20,8 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
+app.use('/artist', artistRouter);
+app.use('/music', musicsRouter);
 
 (async () => {
     await generateSwagger();
