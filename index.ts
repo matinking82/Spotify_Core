@@ -13,7 +13,22 @@ import musicsRouter from './routers/musicsRouter';
 
 let app = express();
 
-app.use(cors());
+const allowedOrigins = [
+    'http://127.0.0.1:300',
+    'https://127.0.0.1:300',
+    'https://spotify.phaedra.ir'
+];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
